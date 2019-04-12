@@ -9,6 +9,13 @@ import {
   View,
 } from 'react-native';
 import Colors from '../constants/Colors';
+import Layout from '../constants/Layout';
+import { Card, Divider } from 'react-native-elements';
+
+const w = Layout.window.width;
+const h = Layout.window.height;
+
+
 
 export class Recipe extends React.Component {
   constructor(props){
@@ -17,34 +24,44 @@ export class Recipe extends React.Component {
   }
   render() {
     return (
-      <View>
-        <Image
-          style={styles.welcomeImage}
-          source={this.props.content.img}
-        />
-        <Text>
-          {this.props.content.title}
-        </Text>
-        <Text>
-          {this.props.content.description}
-        </Text>
-       {/* <View>
-          {this.props.content.ingredients.map(text => <Text>* {text}</Text>)}
-        </View>
-         <View>
-          {this.props.content.directions.map(text => <Text>* {text}</Text>)}
-        </View>*/}
-      </View>
+
+      //<View style={styles.container}>
+      <Card
+      imageStyle={styles.welcomeImage}
+      containerStyle={styles.container}
+      imageWrapperStyle={{alignContent: 'center'}}
+
+      image={this.props.content.img}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Recipe', {con: this.props.content})}>
+          <Text numberOfLines={2}>
+            {this.props.content.title}
+          </Text>
+      </TouchableOpacity>
+        </Card>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    // margin: 10,
+
+    // alignSelf:'center',
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+     width: (h*25)/100,
+     height: (h*25)/100,
+  },
    welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  }
+    maxWidth: (h*25)/100,
+    maxHeight: (h*15)/100,
+
+
+
+  },
+  textContainer: {
+    width: (w*45)/100,
+    height: (h*20)/100,
+  },
 });

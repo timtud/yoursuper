@@ -74,26 +74,6 @@ export interface TextProps extends TextProperties {
   h4?: boolean;
 
   /**
-   * Styling for when `h1` is set
-   */
-  h1Style?: StyleProp<TextStyle>;
-
-  /**
-   * Styling for when `h2` is set
-   */
-  h2Style?: StyleProp<TextStyle>;
-
-  /**
-   * Styling for when `h3` is set
-   */
-  h3Style?: StyleProp<TextStyle>;
-
-  /**
-   * Styling for when `h4` is set
-   */
-  h4Style?: StyleProp<TextStyle>;
-
-  /**
    * Additional styling for Text
    */
   style?: StyleProp<TextStyle>;
@@ -705,11 +685,6 @@ export interface CheckBoxProps {
   title?: string | React.ReactElement<{}>;
 
   /**
-   * Additional props for the title
-   */
-  titleProps?: Partial<TextProperties>;
-
-  /**
    * Style of main container
    */
   containerStyle?: StyleProp<ViewStyle>;
@@ -1119,8 +1094,8 @@ export interface ListItemProps {
   containerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   rightContentContainerStyle?: StyleProp<ViewStyle>;
-  chevron?: boolean | Partial<IconProps> | React.ReactElement<{}>;
-  checkmark?: boolean | Partial<IconProps> | React.ReactElement<{}>;
+  chevron?: boolean | Partial<IconProps>;
+  checkmark?: boolean | Partial<IconProps>;
   title?: string | React.ReactElement<{}>;
   titleStyle?: StyleProp<TextStyle>;
   titleProps?: TextProperties;
@@ -1495,11 +1470,6 @@ export interface SearchBarIOS extends SearchBarPlatform {
     buttonDisabledStyle?: StyleProp<ViewStyle>;
     buttonDisabledTextStyle?: StyleProp<ViewStyle>;
   };
-
-  /**
-   * title of cancel button on iOS.  Default: 'Cancel'.
-   */
-  cancelButtonTitle?: string;
 }
 
 type SearchBarProps = SearchBarWrapper &
@@ -1532,13 +1502,6 @@ export class SearchBar extends React.Component<SearchBarProps, any> {
    * Call clear on the TextInput
    */
   clear(): void;
-
-  /**
-   * Only available for Android and IOS
-   * call blur on the TextInput
-   * call cancel passed from Props
-   */
-  cancel?(): void;
 }
 
 export interface SliderProps {
@@ -1808,13 +1771,6 @@ export interface SocialIconProps {
    * @default false
    */
   loading?: boolean;
-  
-  /**
-   * Specify underlayColor for TouchableHighlight
-   *
-   * @default 'white' if `light` prop is true, otherwise defaults to icon color.
-   */
-  underlayColor?: string;
 }
 
 /**
@@ -1927,7 +1883,7 @@ export interface ImageProps extends ImageProperties {
   /**
    * Content to render when image is loading
    */
-  PlaceholderContent?: React.ReactElement<any>;
+  PlaceholderContent?: React.ComponentType<any>;
 
   /**
    * Additional styling for the container
@@ -1964,7 +1920,6 @@ export interface Colors {
   readonly warning: string;
   readonly error: string;
   readonly disabled: string;
-  readonly divider: string;
   readonly platform: {
     ios: {
       primary: string;

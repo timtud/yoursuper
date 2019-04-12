@@ -4,15 +4,20 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import RecipeScreen from '../screens/RecipeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: HomeScreen, Recipe: RecipeScreen
 });
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarOptions: {
+        activeTintColor: '#82b845',
+        inactiveTintColor: '#ccc',
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -31,6 +36,10 @@ const LinksStack = createStackNavigator({
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
+  tabBarOptions: {
+        activeTintColor: '#82b845',
+        inactiveTintColor: '#ccc',
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -45,6 +54,10 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
+  tabBarOptions: {
+        activeTintColor: '#82b845',
+        inactiveTintColor: '#ccc',
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

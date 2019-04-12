@@ -64,7 +64,6 @@ import { CheckBox } from 'react-native-elements'
 - [`right`](#right)
 - [`center`](#center)
 - [`title`](#title)
-- [`titleProps`](#titleprops)
 - [`containerStyle`](#containerstyle)
 - [`textStyle`](#textstyle)
 - [`onLongPress`](#onlongpress)
@@ -140,19 +139,11 @@ Aligns checkbox to center (optional)
 
 ### `title`
 
-Title of checkbox
+Title of checkbox (required)
 
 |  Type  | Default |
 | :----: | :-----: |
 | string |  none   |
-
-### `titleProps`
-
-Additional props for the title Text component (optional)
-
-|                                     Type                                     | Default |
-| :--------------------------------------------------------------------------: | :-----: |
-| {[...Text props](https://facebook.github.io/react-native/docs/text#props-1)} |  none   |
 
 ### `containerStyle`
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import deepmerge from 'deepmerge';
+import merge from 'lodash.merge';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import { ThemeConsumer } from './ThemeProvider';
@@ -32,7 +32,7 @@ const withTheme = (WrappedComponent, themeKey) => {
             const props = {
               theme,
               updateTheme,
-              ...deepmerge((themeKey && theme[themeKey]) || {}, rest),
+              ...merge({}, themeKey && theme[themeKey], rest),
               children,
             };
 

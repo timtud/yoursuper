@@ -1,9 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 24853,
+  "expoServerNgrokUrl": "https://wh-ji4.anonymous.yoursuper.exp.direct",
+  "packagerNgrokUrl": "https://packager.wh-ji4.anonymous.yoursuper.exp.direct",
+  "ngrokPid": 24936,
+  "webpackServerPort": null
 }
