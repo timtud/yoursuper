@@ -53,7 +53,7 @@ export class RecipeList extends React.Component {
       return (
 
       <ScrollView>
-      <Divider style={{ backgroundColor: '#82b845', height: 2, marginDown: 5 }} />
+      <Divider style={{ backgroundColor: '#82b845', height: 2 }} />
 
       {categoryList.map(cat => {
       const filteredRobots = this.props.content.filter(recipe => (cat.toLowerCase() === recipe.category.toLowerCase()));

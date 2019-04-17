@@ -26,18 +26,18 @@ export class Recipe extends React.Component {
     return (
 
       //<View style={styles.container}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Recipe', {con: this.props.content})}>
       <Card
       imageStyle={styles.welcomeImage}
       containerStyle={styles.container}
       imageWrapperStyle={{alignContent: 'center'}}
 
       image={this.props.content.img}>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Recipe', {con: this.props.content})}>
           <Text numberOfLines={2}>
             {this.props.content.title}
           </Text>
-      </TouchableOpacity>
         </Card>
+      </TouchableOpacity>
 
     );
   }

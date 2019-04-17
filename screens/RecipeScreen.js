@@ -6,6 +6,8 @@ import {
   Text,
   View,
   ScrollView,
+  Button,
+  AsyncStorage,
 } from 'react-native';
 import Layout from '../constants/Layout';
 import { Divider } from 'react-native-elements';
@@ -16,10 +18,47 @@ const h = Layout.window.height;
 export default class RecipeScreen extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      list: [],
+    }
   }
   static navigationOptions = {
 
   };
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+    this.getList()
+    });
+  }
+
+    componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
+
+  addShop = (ing) => {
+    this.setList(ing)
+
+  }
+
+  getList = () => {
+    AsyncStorage.getItem('ShoppingList')
+      .then(req => JSON.parse(req))
+      .then(json => this.setState({
+        list: json
+      }))
+      .catch(error => console.log('no list!'));
+  }
+
+  setList = (ing) => {
+    let uplist = this.state.list
+    uplist.push({title: ing, checked: false})
+    this.setState({list: uplist})
+    AsyncStorage.setItem("ShoppingList", JSON.stringify(this.state.list))
+    .catch(error => console.log(error))
+  }
 
   render() {
     let content = this.props.navigation.getParam('con');
@@ -47,9 +86,14 @@ export default class RecipeScreen extends React.Component {
             })}
           </View>
           <View tabLabel='Ingredients'>
+
             {content.ingredients.map(ing => {
               return (
                 <View>
+                <Button
+                title= {"add"}
+                onPress={() => this.addShop(ing)}
+                />
                 <Text>{ing}</Text>
                 <Divider style={{ backgroundColor: '#82b845', height: 2, marginVertical: 5 }} />
                 </View>
