@@ -76,9 +76,9 @@ export default class RecipeScreen extends React.Component {
           renderTabBar={() => <ScrollableTabBar />}
         >
           <View tabLabel='Directions'>
-            {content.directions.map(dir => {
+            {content.directions.map((dir, i)  => {
               return (
-                <View>
+                <View key={i}>
                 <Text>{dir}</Text>
                 <Divider style={{ backgroundColor: '#82b845', height: 2, marginVertical: 5 }} />
                 </View>
@@ -87,9 +87,9 @@ export default class RecipeScreen extends React.Component {
           </View>
           <View tabLabel='Ingredients'>
 
-            {content.ingredients.map(ing => {
+            {content.ingredients.map((ing, i) => {
               return (
-                <View>
+                <View key={i}>
                 <Button
                 title= {"add"}
                 onPress={() => this.addShop(ing)}

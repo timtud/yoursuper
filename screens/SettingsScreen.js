@@ -11,6 +11,7 @@ import {
   NetInfo,
   AsyncStorage,
   FlatList,
+  Button,
 } from 'react-native';
 import { CheckBox} from 'react-native-elements';
 
@@ -57,35 +58,49 @@ export default class SettingsScreen extends React.Component {
 
   deleteItemById = id => {
   const filteredData = this.state.list.splice(id , 1);
-  console.log(id)
   this.setState({ list: filteredData });
   this.setList();
   this.getList();
-  console.log(this.state.list)
+}
+
+  CheckItemById = id => {
+  const filteredData = this.state.list
+  filteredData[id] = {title: filteredData[id].title ,checked: !filteredData[id].checked}
+  this.setState({ list: filteredData });
+  this.setList();
+  this.getList();
+}
+
+putText = (item) => {
+  if (item.checked){
+    return { textDecorationLine: 'line-through' }
+  } else {
+    return {}
+  }
 }
 
 
 
   render() {
     const list = this.state.list
-    //console.log(list[0].item)
     return(
 
        <View style={styles.container}>
         <FlatList
           data={list}
           renderItem={({item, index}) =>
-          <TouchableOpacity onPress={ () => this.deleteItemById(index)}>
-
-          {
-            <View>
-            <Text>{item.title}</Text>
-            <Text>{item.checked}</Text>
-            </View>
-            }
-          </TouchableOpacity>
+          <View>
+            <TouchableOpacity onPress={ () => this.CheckItemById(index)}>
+              <View>
+              <Text style={this.putText(item)}>{item.title}</Text>
+              </View>
+            </TouchableOpacity>
+            <Button title={"delete"}
+              onPress={ () => this.deleteItemById(index)}
+            />
+          </View>
         }
-
+        keyExtractor={(item) => item.title}
         />
       </View>
 

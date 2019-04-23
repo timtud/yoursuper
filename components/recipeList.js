@@ -22,32 +22,6 @@ export class RecipeList extends React.Component {
 
   }
 
-
-  createLists = () => {
-    let lists = []
-
-    categoryList.map(cat => {
-      const filteredRobots = this.props.content.filter(recipe => (cat.toLowerCase() === recipe.category.toLowerCase()));
-      return(
-          <FlatList
-          horizontal
-          pagingEnabled={false}
-          showsHorizontalScrollIndicator={false}
-          legacyImplementation={false}
-          initialNumToRender={3}
-          data={filteredRobots}
-          renderItem={
-            ({item}) => <Recipe content={item}/>
-          }
-           keyExtractor={(item) => item.title}
-          />
-        )
-      })
-
-
-
-
-  }
   render() {
     if (this.props.content.length !== 0)
       return (
@@ -55,10 +29,10 @@ export class RecipeList extends React.Component {
       <ScrollView>
       <Divider style={{ backgroundColor: '#82b845', height: 2 }} />
 
-      {categoryList.map(cat => {
+      {categoryList.map((cat, i) => {
       const filteredRobots = this.props.content.filter(recipe => (cat.toLowerCase() === recipe.category.toLowerCase()));
       if (filteredRobots.length !== 0) return(
-        <View>
+        <View key={i} >
           <Text>{cat}</Text>
           <Divider style={{ backgroundColor: '#82b845', height: 2, marginVertical: 5 }} />
 
